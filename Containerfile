@@ -56,5 +56,5 @@ RUN python3 -m pip install --upgrade pip --no-cache-dir --break-system-packages 
 RUN python3 -m pip install kas==4.7 --no-cache-dir --break-system-packages
 
 WORKDIR /yocto
-COPY entrypoint /yocto/entrypoint
-ENTRYPOINT [ "/yocto/entrypoint" ]
+
+ENTRYPOINT ["/bin/bash"]
