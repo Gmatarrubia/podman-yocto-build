@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# This script is the entry point for the container.
+# It will prepare the dependencies if needed.
+
+export PATH=/yocto:${PATH}
+
+# Increase the watcher inodes
+sysctl -n -w fs.inotify.max_user_watches=128512
+
+# preserve sanctioned env vars for all users within the container instance
+if [ $# -eq 0 ]
+then
+    exec /bin/bash
+else
+    exec "$@"
+fi
